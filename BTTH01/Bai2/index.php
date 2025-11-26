@@ -1,5 +1,8 @@
 <?php
-require 'data.php';
+$file_path = 'Quiz.txt';
+if (file_exists($file_path)) {
+    $file_content = file_get_contents($file_path);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,22 +12,6 @@ require 'data.php';
     <title>Quiz</title>
 </head>
 <body>
-    <form action="xuly.php" method="post">
-        <?php $i = 1;
-        foreach ($quizs as $quiz) { ?>
-            <label>Câu hỏi <?php echo $i ?>: <?php echo $quiz['cauhoi']?></label>
-            <br>
-            <input type="radio" name="<?php echo $quiz['cauhoi']?>" value="A"> <?php echo $quiz['A']?>
-            <br>
-            <input type="radio" name="<?php echo $quiz['cauhoi']?>" value="B"> <?php echo $quiz['B']?>
-            <br>
-            <input type="radio" name="<?php echo $quiz['cauhoi']?>" value="C"> <?php echo $quiz['C']?>
-            <br>
-            <input type="radio" name="<?php echo $quiz['cauhoi']?>" value="D"> <?php echo $quiz['D']?>
-            <p>Đáp án: <?php echo $quiz['dapan']?></p>
-            <br>
-        <?php $i+=1; } ?>
-        <input type="submit" value="Submit">
-    </form>
+    <pre><?php echo htmlspecialchars($file_content); ?></pre>
 </body>
 </html>
